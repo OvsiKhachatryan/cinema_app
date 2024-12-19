@@ -64,10 +64,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     }
 }
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($requestMethod === 'POST' && $endpoint === 'book_seat') {
     $data = json_decode(file_get_contents("php://input"), true);
 
-    if (isset($data['action']) && $data['action'] === 'book_seat' && isset($data['seat_id']) && isset($data['movie_id']) && isset($data['token'])) {
+    if (isset($data['seat_id']) && isset($data['movie_id']) && isset($data['token'])) {
+        $booking = new Booking();
         echo $booking->bookSeat($data['token'], $data['seat_id'], $data['movie_id']);
     } else {
         echo json_encode(['status' => 'error', 'message' => 'Missing parameters or incorrect action']);
