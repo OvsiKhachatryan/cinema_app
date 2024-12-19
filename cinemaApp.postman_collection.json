@@ -1,0 +1,244 @@
+{
+	"info": {
+		"_postman_id": "4203cba5-9d87-4ea3-9c75-8c3109f0bd11",
+		"name": "cinemaApp",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "31248396"
+	},
+	"item": [
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"Anna\",\n    \"email\": \"ann@mail.ru\",\n    \"password\": \"password123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8888/cinema-app/index.php?endpoint=register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"cinema-app",
+						"index.php"
+					],
+					"query": [
+						{
+							"key": "endpoint",
+							"value": "register"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"identifier\": \"ann@mail.ru\", \n    \"password\": \"password123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8888/cinema-app/index.php?endpoint=login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"cinema-app",
+						"index.php"
+					],
+					"query": [
+						{
+							"key": "endpoint",
+							"value": "login"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Rooms",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "82d189e912dd323d617428e5b3e503d1"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8888/cinema-app/index.php?action=rooms&token=6f324aba0560c580f2127e34e0982665",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"cinema-app",
+						"index.php"
+					],
+					"query": [
+						{
+							"key": "action",
+							"value": "rooms"
+						},
+						{
+							"key": "token",
+							"value": "6f324aba0560c580f2127e34e0982665"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get movies for a room",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8888/cinema-app/index.php?action=movies&room_id=3&token=6f324aba0560c580f2127e34e0982665",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"cinema-app",
+						"index.php"
+					],
+					"query": [
+						{
+							"key": "action",
+							"value": "movies"
+						},
+						{
+							"key": "room_id",
+							"value": "3"
+						},
+						{
+							"key": "token",
+							"value": "6f324aba0560c580f2127e34e0982665"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get seats for a movie",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8888/cinema-app/index.php?action=seats&room_id=3&token=6f324aba0560c580f2127e34e0982665",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"cinema-app",
+						"index.php"
+					],
+					"query": [
+						{
+							"key": "action",
+							"value": "seats"
+						},
+						{
+							"key": "room_id",
+							"value": "3"
+						},
+						{
+							"key": "token",
+							"value": "6f324aba0560c580f2127e34e0982665"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Book a Seat",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"seat_id\": 5,\n  \"movie_id\": 4,\n  \"token\": \"6f324aba0560c580f2127e34e0982665\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8888/cinema-app/index.php?endpoint=book_seat",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"cinema-app",
+						"index.php"
+					],
+					"query": [
+						{
+							"key": "endpoint",
+							"value": "book_seat"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
